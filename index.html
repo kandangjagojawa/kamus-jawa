@@ -5,26 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kamus Web Interaktif</title>
     <style>
-        /* Desain Dasar */
         body { font-family: Arial, sans-serif; background-color: #f4f7f6; margin: 0; padding: 15px; color: #333; }
         .container { max-width: 600px; margin: 0 auto; background: #fff; padding: 20px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
         h1 { text-align: center; font-size: 1.5rem; margin-top: 0; }
-
-        /* Tombol Toggle Arah */
-        .btn-toggle { width: 100%; background: #28a745; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-bottom: 15px; }
         
-        /* Area Pencarian */
+        /* Menu Navigasi */
+        .nav-menu { display: flex; gap: 10px; margin-bottom: 20px; justify-content: center; }
+        .nav-menu a { text-decoration: none; padding: 10px 15px; border-radius: 6px; font-weight: bold; font-size: 14px; background: #e9ecef; color: #333; }
+        .nav-menu a.aktif { background: #007bff; color: white; }
+
+        .btn-toggle { width: 100%; background: #28a745; color: white; border: none; padding: 12px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; margin-bottom: 15px; }
         .search-box { display: flex; gap: 8px; margin-bottom: 15px; }
         .search-box input { flex: 1; padding: 12px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; outline: none; }
         .search-box input:focus { border-color: #007bff; }
         .search-box button { background: #007bff; color: white; border: none; padding: 12px 20px; font-size: 16px; border-radius: 6px; cursor: pointer; }
-
-        /* Area Tombol Abjad (Flexbox untuk Mobile) */
         .alphabet-grid { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 20px; padding: 10px; background: #f9f9f9; border-radius: 6px; border: 1px solid #eee; }
-        .alphabet-grid button { width: calc(14.28% - 5px); /* 7 tombol per baris */ padding: 8px 0; background: #e9ecef; border: 1px solid #ced4da; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold; }
+        .alphabet-grid button { width: calc(14.28% - 5px); padding: 8px 0; background: #e9ecef; border: 1px solid #ced4da; border-radius: 4px; cursor: pointer; font-size: 14px; font-weight: bold; }
         .alphabet-grid button:active { background: #007bff; color: white; }
-
-        /* Daftar Hasil */
         .result-item { padding: 12px 0; border-bottom: 1px solid #eee; }
         .result-item:last-child { border-bottom: none; }
         .word { font-weight: bold; color: #d32f2f; font-size: 1.1rem; }
@@ -35,25 +32,21 @@
 <body>
 
 <div class="container">
-    <h1>Kamus Web</h1>
-    
-    <!-- Tombol Pengubah Arah -->
+    <!-- Menu Navigasi -->
+    <div class="nav-menu">
+        <a href="index.html" class="aktif">Kamus Umum</a>
+        <a href="kamus2.html">Kamus Tingkatan (Ngoko-Krama)</a>
+    </div>
+
+    <h1>Kamus Umum</h1>
     <button id="btnToggle" class="btn-toggle" onclick="ubahMode()">Mode: Indonesia ➔ Jawa</button>
-    
-    <!-- Kolom Pencarian -->
     <div class="search-box">
         <input type="text" id="inputCari" placeholder="Ketik kata bahasa Indonesia...">
         <button onclick="cariKata()">Cari</button>
     </div>
-
-    <!-- Wadah untuk Tombol Abjad -->
-    <div class="alphabet-grid" id="wadahAbjad">
-        <!-- Tombol A-Z akan dimuat di sini oleh JavaScript -->
-    </div>
-
-    <!-- Wadah Hasil -->
+    <div class="alphabet-grid" id="wadahAbjad"></div>
     <div id="hasilPencarian">
-        <p class="info-text">Hasil akan muncul di sini.</p>
+        <p class="info-text">Silakan mulai pencarian.</p>
     </div>
 </div>
 
